@@ -1,1 +1,1 @@
-export { problems } from './problems'
+export { algorithms } from './algorithms'
