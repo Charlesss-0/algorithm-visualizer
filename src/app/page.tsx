@@ -1,15 +1,19 @@
 'use client'
 
-import { AlgorithmDescription, AlgorithmView, Sidebar } from '@/components'
+import { DescriptionCard, ExampleCard, Sidebar, ViewCard } from '@/components'
 
 export default function Home() {
 	return (
-		<div className="h-screen bg-gray-100">
+		<div className="h-screen bg-gray-100 overflow-auto">
 			<Sidebar />
 
-			<AlgorithmDescription />
+			<main className="p-10">
+				<DescriptionCard />
 
-			<AlgorithmView />
+				<ExampleCard />
+
+				<ViewCard />
+			</main>
 		</div>
 	)
 }

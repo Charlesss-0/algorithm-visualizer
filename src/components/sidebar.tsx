@@ -1,12 +1,16 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './ui/accordion'
+import { AppDispatch, appSlice } from '@/redux'
 import { useEffect, useRef, useState } from 'react'
 
 import { Button } from './ui/button'
 import { HiOutlineMenuAlt2 } from 'react-icons/hi'
 import { ScrollArea } from './ui/scroll-area'
 import { algorithms } from '@/data'
+import { useDispatch } from 'react-redux'
 
 export default function Sidebar() {
+	const dispatch = useDispatch<AppDispatch>()
+	const { setSelectedPattern } = appSlice.actions
 	const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false)
 	const sidebarRef = useRef<HTMLDivElement>(null)
 
@@ -28,7 +32,7 @@ export default function Sidebar() {
 			<div
 				ref={sidebarRef}
 				className={
-					'absolute top-0 left-0 h-full w-max transition-all duration-300 ease-in-out z-10' +
+					'fixed top-0 left-0 h-full w-max transition-all duration-300 ease-in-out z-10' +
 					(isSidebarOpen ? ' translate-x-0' : ' translate-x-[-100%]')
 				}
 			>
@@ -52,9 +56,13 @@ export default function Sidebar() {
 									<AccordionTrigger>{category}</AccordionTrigger>
 									<AccordionContent>
 										<ul>
-											{patterns.map(pattern => (
+											{patterns.map((pattern: Pattern) => (
 												<li key={pattern.id} className="mb-2">
-													<Button variant="ghost" className="w-full justify-start">
+													<Button
+														variant="ghost"
+														className="w-full justify-start"
+														onClick={() => dispatch(setSelectedPattern(pattern))}
+													>
 														{pattern.title}
 													</Button>
 												</li>

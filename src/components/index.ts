@@ -1,5 +1,6 @@
-import AlgorithmDescription from './algorithmDescription'
-import AlgorithmView from './algorithmView'
+import DescriptionCard from './description-card'
+import ExampleCard from './example-card'
 import Sidebar from './sidebar'
+import ViewCard from './view-card'
 
-export { AlgorithmView, Sidebar, AlgorithmDescription }
+export { Sidebar, DescriptionCard, ViewCard, ExampleCard }
