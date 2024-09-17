@@ -1,6 +1,6 @@
-import DescriptionCard from './description-card'
-import ExampleCard from './example-card'
+import Description from './description'
+import Example from './example'
 import Sidebar from './sidebar'
-import ViewCard from './view-card'
+import Visualization from './visualization'
 
-export { Sidebar, DescriptionCard, ViewCard, ExampleCard }
+export { Sidebar, Description, Visualization, Example }

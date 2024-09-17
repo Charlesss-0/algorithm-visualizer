@@ -77,7 +77,7 @@ export default function Sidebar() {
 			</div>
 
 			{isSidebarOpen && (
-				<div className="fixed top-0 left-0 h-full w-full bg-black/40 " aria-hidden="true" />
+				<div className="fixed top-0 left-0 h-full w-full bg-black/40" aria-hidden="true" />
 			)}
 		</>
 	)

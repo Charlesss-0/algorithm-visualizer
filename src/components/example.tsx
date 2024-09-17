@@ -1,11 +1,11 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card'
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs'
 import { useEffect, useState } from 'react'
 
 import { RootState } from '@/redux'
 import { useSelector } from 'react-redux'
 
-export default function ExampleCard() {
+export default function Example() {
 	const { selectedPattern } = useSelector((state: RootState) => state.app)
 	const [selectedTab, setSelectedTab] = useState(selectedPattern.examples[0]?.title || '')
 
@@ -16,9 +16,9 @@ export default function ExampleCard() {
 	}, [selectedPattern])
 
 	return (
-		<Card className="mb-8">
+		<Card>
 			<CardHeader>
-				<CardTitle>Examples: {selectedPattern.title}</CardTitle>
+				<CardTitle>Examples</CardTitle>
 			</CardHeader>
 
 			<CardContent>
@@ -26,31 +26,32 @@ export default function ExampleCard() {
 					<TabsList>
 						{selectedPattern.examples.map((example, index) => (
 							<TabsTrigger key={index} value={example.title}>
-								Example {index + 1}
+								{example.title}
 							</TabsTrigger>
 						))}
 					</TabsList>
 
 					{selectedPattern.examples.map((example, index) => (
-						<TabsContent key={index} value={example.title}>
-							<Card>
-								<CardHeader>
-									<CardTitle>{example.title}</CardTitle>
-									<CardDescription>{example.description}</CardDescription>
-								</CardHeader>
+						<TabsContent key={index} value={example.title} className="p-2 space-y-4">
+							<div>
+								<h3 className="font-semibold">Example {index + 1}</h3>
 
-								<CardContent>
-									<p>
-										<strong>Input:</strong> {example.input}
-									</p>
-									<p>
-										<strong>Output:</strong> {example.output}
-									</p>
-									<p>
-										<strong>Explanation:</strong> {example.explanation}
-									</p>
-								</CardContent>
-							</Card>
+								<p className="text-sm text-muted-foreground">{example.description}</p>
+							</div>
+
+							<div className="space-y-2">
+								<p>
+									<strong>Input:</strong> {example.input}
+								</p>
+
+								<p>
+									<strong>Output:</strong> {example.output}
+								</p>
+
+								<p>
+									<strong>Explanation:</strong> {example.explanation}
+								</p>
+							</div>
 						</TabsContent>
 					))}
 				</Tabs>

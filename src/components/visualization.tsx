@@ -5,7 +5,7 @@ import { RootState } from '@/redux'
 import { useSelector } from 'react-redux'
 import { useState } from 'react'
 
-export default function ViewCard() {
+export default function Visualization() {
 	const { selectedPattern } = useSelector((state: RootState) => state.app)
 	const [currentStep, setCurrentStep] = useState(0)
 
@@ -33,13 +33,15 @@ export default function ViewCard() {
 
 			<CardContent>
 				<div className="flex flex-col items-center space-y-8">
-					<div className="w-full h-40 bg-gray-200 rounded-lg flex items-center justify-center">
+					<div className="flex items-center justify-center w-full h-40 bg-gray-200 rounded-lg">
 						<p className="text-gray-500">Visualization placeholder for {selectedPattern.title}</p>
 					</div>
-					<div className="text-center space-y-4">
+
+					<div className="space-y-4 text-center">
 						<p className="font-semibold">
 							{selectedPattern.visualizationSteps[currentStep].description}
 						</p>
+
 						<p>{selectedPattern.visualizationSteps[currentStep].explanation}</p>
 					</div>
 
@@ -47,12 +49,14 @@ export default function ViewCard() {
 						<Button onClick={prevStep} disabled={currentStep === 0}>
 							Previous Step
 						</Button>
+
 						<Button
 							onClick={nextStep}
 							disabled={currentStep === selectedPattern.visualizationSteps?.length - 1}
 						>
 							Next Step
 						</Button>
+
 						<Button onClick={resetVisualization}>Reset</Button>
 					</div>
 				</div>

@@ -1,13 +1,13 @@
 import './globals.css'
 
+import { Inter } from 'next/font/google'
 import type { Metadata } from 'next'
 import StoreProvider from './store-provider'
-import localFont from 'next/font/local'
 
-const geist = localFont({
-	src: './fonts/GeistVF.woff',
-	display: 'swap',
-	weight: '400',
+const inter = Inter({
+	subsets: ['latin'],
+	weight: ['400'],
+	variable: '--font-inter',
 })
 
 export const metadata: Metadata = {
@@ -19,7 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 	return (
 		<StoreProvider>
 			<html lang="en">
-				<body className={`${geist.className} antialiased`}>{children}</body>
+				<body className={`${inter.className} antialiased`}>{children}</body>
 			</html>
 		</StoreProvider>
 	)
